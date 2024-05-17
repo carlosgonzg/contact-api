@@ -14,10 +14,10 @@ export class ContactDTO {
     @ApiProperty({ description: 'Contact Email' })
     email: string;
 
-    @IsPhoneNumber()
+    @IsString()
     @ApiProperty({ description: 'Contact Phone' })
     phone: string;
-    
+
     @IsString()
     @ApiProperty({ description: 'Contact Company' })
     company: string;

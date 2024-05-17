@@ -5,10 +5,19 @@ import { Contact } from '../models/contact.model';
 import { ContactNotFoundError } from '../utils/contactNotFoundError';
 import { ApiResponse } from '@nestjs/swagger';
 
+
+/**
+ * Contacts Controller
+ */
 @Controller('contacts')
 export class ContactsController {
   constructor(private readonly contactsService: ContactsService) { }
 
+  /**
+   * Get Contacts.
+   *
+   * @returns List of Contacts.
+   */
   @Get()
   @ApiResponse({
     status: 200,
@@ -19,6 +28,11 @@ export class ContactsController {
     return this.contactsService.getContacts();
   }
 
+  /**
+   * Find Contact by Id.
+   *
+   * @returns Contact.
+   */
   @Get(':id')
   @ApiResponse({
     status: 200,
@@ -39,6 +53,11 @@ export class ContactsController {
     }
   }
 
+  /**
+   * Create Contact.
+   *
+   * @returns Contact.
+   */
   @Post()
   @ApiResponse({
     status: 200,
@@ -49,6 +68,11 @@ export class ContactsController {
     return this.contactsService.insertContact(contact);
   }
 
+  /**
+   * Updates Contact.
+   *
+   * @returns Contact.
+   */
   @Put(':id')
   @ApiResponse({
     status: 200,
@@ -66,6 +90,11 @@ export class ContactsController {
     }
   }
 
+  /**
+   * Deletes Contact.
+   *
+   * @returns void.
+   */
   @Delete(':id')
   @HttpCode(204)
   @ApiResponse({

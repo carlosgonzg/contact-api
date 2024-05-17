@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { Contact } from 'src/models/contact.model';
 import { v4 as uuidv4 } from 'uuid';
 import { ContactDTO } from './dto/contactDTO';
-import { NotFoundError } from 'rxjs';
 import { ContactNotFoundError } from 'src/utils/contactNotFoundError';
 
 @Injectable()
@@ -13,7 +12,6 @@ export class ContactsService {
   }
   getContactById(id: string): Contact {
     const index = this.contacts.findIndex(el => el.id === id);
-    console.log('index', index)
     if(index === -1){
       throw new ContactNotFoundError();
     }

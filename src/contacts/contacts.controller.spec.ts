@@ -31,5 +31,55 @@ describe('ContactsController', () => {
       const list = contactsController.getContacts();
       expect(list.length).toBe(1);
     });
+    it('should return a contact', () => {
+      const contact = contactsController.insertContact({
+        firstName: 'Carlos',
+        lastName: 'Gonzalez',
+        email: 'carltronik@gmail.com',
+        phone: '1231231234',
+        company: 'abc company'
+      })
+      const c = contactsController.getContactById(contact.id);
+      expect(c.id).toBe(contact.id);
+    });
+    it('should create a contact', () => {
+      const contact = contactsController.insertContact({
+        firstName: 'Carlos',
+        lastName: 'Gonzalez',
+        email: 'carltronik@gmail.com',
+        phone: '1231231234',
+        company: 'abc company'
+      })
+      expect(contact.id).toBeDefined();
+    });
+    it('should update a contact', () => {
+      let contact = contactsController.insertContact({
+        firstName: 'Carlos',
+        lastName: 'Gonzalez',
+        email: 'carltronik@gmail.com',
+        phone: '1231231234',
+        company: 'abc company'
+      })
+      contact = contactsController.updateContact(contact.id, {
+        firstName: 'Carlos 1',
+        lastName: 'Gonzalez',
+        email: 'carltronik@gmail.com',
+        phone: '1231231234',
+        company: 'abc company'
+      })
+      expect(contact.firstName).toBe('Carlos 1');
+    });
+    it('should delete a contact', () => {
+      let contact = contactsController.insertContact({
+        firstName: 'Carlos',
+        lastName: 'Gonzalez',
+        email: 'carltronik@gmail.com',
+        phone: '1231231234',
+        company: 'abc company'
+      })
+      contactsController.deleteContact(contact.id);
+      const list = contactsController.getContacts();
+      expect(list.length).toBe(0);
+    });
   });
 });

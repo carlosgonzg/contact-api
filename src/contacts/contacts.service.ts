@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { Contact } from 'src/models/contact.model';
+import { Contact } from '../models/contact.model';
 import { v4 as uuidv4 } from 'uuid';
 import { ContactDTO } from './dto/contactDTO';
-import { ContactNotFoundError } from 'src/utils/contactNotFoundError';
+import { ContactNotFoundError } from '../utils/contactNotFoundError';
 
 @Injectable()
 export class ContactsService {

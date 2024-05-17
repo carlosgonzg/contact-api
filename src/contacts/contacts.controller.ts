@@ -1,9 +1,8 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Param, Post, Put, Res } from '@nestjs/common';
 import { ContactsService } from './contacts.service';
 import { ContactDTO } from './dto/contactDTO';
-import { Contact } from 'src/models/contact.model';
-import { Response } from 'express';
-import { ContactNotFoundError } from 'src/utils/contactNotFoundError';
+import { Contact } from '../models/contact.model';
+import { ContactNotFoundError } from '../utils/contactNotFoundError';
 import { ApiResponse } from '@nestjs/swagger';
 
 @Controller('contacts')

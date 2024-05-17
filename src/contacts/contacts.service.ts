@@ -7,9 +7,20 @@ import { ContactNotFoundError } from '../utils/contactNotFoundError';
 @Injectable()
 export class ContactsService {
   contacts: Contact[] = []; 
+  /**
+   * Get Contacts.
+   *
+   * @returns List of Contacts.
+   */
   getContacts(): Contact[] {
     return this.contacts;
   }
+
+  /**
+   * Find Contact by Id.
+   *
+   * @returns Contact.
+   */
   getContactById(id: string): Contact {
     const index = this.contacts.findIndex(el => el.id === id);
     if(index === -1){
@@ -18,6 +29,12 @@ export class ContactsService {
     console.log(this.contacts[index])
     return this.contacts[index];
   }
+
+  /**
+   * Create Contact.
+   *
+   * @returns Contact.
+   */
   insertContact(contact: ContactDTO): Contact {
     const newContact : Contact = {
       ...contact,
@@ -26,6 +43,12 @@ export class ContactsService {
     this.contacts.push(newContact);
     return newContact;
   }
+
+  /**
+   * Updates Contact.
+   *
+   * @returns Contact.
+   */
   updateContact(id: string, contact: ContactDTO): Contact {
     const index = this.contacts.findIndex(el => el.id === id);
     if(index === -1){
@@ -37,6 +60,12 @@ export class ContactsService {
     };
     return this.contacts[index];
   }
+
+  /**
+   * Deletes Contact.
+   *
+   * @returns void.
+   */
   deleteContact(id: string): void {
     const index = this.contacts.findIndex(el => el.id === id);
     if(index === -1){
